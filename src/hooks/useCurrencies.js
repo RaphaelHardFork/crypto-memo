@@ -4,14 +4,13 @@ export const useCurrencies = () => {
   const [{ loading, error, currencies }, dispatch] = useReducer(reducer, {
     loading: false,
     error: "",
-    currencies: []
+    currencies: [],
   })
   useEffect(() => {
     let isCancelled = false
-    const API_KEY = process.env.REACT_APP_API_KEY
     dispatch({ type: "FETCH_INIT" })
     fetch(
-      `https://api.nomics.com/v1/currencies/ticker?key=${API_KEY}&interval=1d,30d&convert=EUR`
+      `https://api.nomics.com/v1/currencies/ticker?key=${process.env.REACT_APP_CRYPTO_API}&interval=1d,30d&convert=EUR`
     )
       .then((response) => {
         console.log(response)

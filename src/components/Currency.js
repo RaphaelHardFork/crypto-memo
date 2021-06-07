@@ -1,4 +1,6 @@
-const Currency = ({ currency, isActive, setActive }) => {
+import { memo } from "react"
+
+const Currency = ({ currency, isActive, hideDetails, showDetails }) => {
   const { id, name, symbol, logo_url, ...rest } = currency
   return (
     <div className="shadow-sm p-2 mb-3">
@@ -18,7 +20,7 @@ const Currency = ({ currency, isActive, setActive }) => {
           <button
             type="button"
             className="d-flex ms-auto btn btn-sm btn-dark"
-            onClick={() => setActive(null)}
+            onClick={hideDetails}
           >
             Hide details
           </button>
@@ -26,7 +28,7 @@ const Currency = ({ currency, isActive, setActive }) => {
           <button
             type="button"
             className="d-flex ms-auto btn btn-sm btn-dark"
-            onClick={() => setActive(id)}
+            onClick={() => showDetails(id)}
           >
             Show details
           </button>
@@ -37,4 +39,4 @@ const Currency = ({ currency, isActive, setActive }) => {
   )
 }
 
-export default Currency
+export default memo(Currency)
